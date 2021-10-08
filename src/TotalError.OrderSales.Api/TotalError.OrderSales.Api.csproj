@@ -31,9 +31,4 @@
       <ProjectReference Include="..\TotalError.OrderSales.Domain\TotalError.OrderSales.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Controllers\" />
-      <Folder Include="FluentValidators\" />
-    </ItemGroup>
-
 </Project>

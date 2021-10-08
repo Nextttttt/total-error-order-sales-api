@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using TotalError.OrderSales.Data.Entities;
 using TotalError.OrderSales.Domain.Dtos;
 
@@ -18,6 +13,7 @@ namespace TotalError.OrderSales.Data
             CreateMap<CountryDto, CountryEntity>().ReverseMap();
             CreateMap<ItemDto, ItemEntity>().ReverseMap();
             CreateMap<SaleDto, SaleEntity>().ReverseMap();
+            CreateMap<UserDto, UserEntity>().ReverseMap();
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using TotalError.OrderSales.Api.Models;
+using TotalError.OrderSales.Domain.Dtos;
 
 namespace TotalError.OrderSales.Api
 {
@@ -10,7 +8,8 @@ namespace TotalError.OrderSales.Api
     {
         public MapperProfile()
         {
-
+            CreateMap<LoginResponseDto, UserDto>().ReverseMap();
+            CreateMap<RegisterModel, UserDto>().ReverseMap();
         }
     }
 }

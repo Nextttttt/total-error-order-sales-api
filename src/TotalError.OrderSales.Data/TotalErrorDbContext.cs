@@ -16,6 +16,8 @@ namespace TotalError.OrderSales.Data
 
         }
 
+        public DbSet<UserEntity> Users { get; set; }
+
         public DbSet<OrderEntity> Orders { get; set; }
 
         public DbSet<SaleEntity> Sales { get; set; }
