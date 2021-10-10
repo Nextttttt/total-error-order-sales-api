@@ -2,7 +2,7 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace CompanyName.ProjectName.Api
+namespace TotalError.OrderSales.Api
 {
     public class Program
     {

@@ -31,6 +31,37 @@ namespace TotalError.OrderSales.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<RegionEntity>()
+                .HasMany(r => r.Countries)
+                .WithOne(c => c.Region)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<RegionEntity>()
+                .HasMany(r => r.Orders)
+                .WithOne(o => o.Region)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<OrderEntity>()
+                .HasOne(o => o.Region)
+                .WithMany(r => r.Orders)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<SaleEntity>()
+                .Property(s => s.TotalProfit).HasColumnType("money");
+
+            modelBuilder.Entity<SaleEntity>()
+                .Property(s => s.TotalCost).HasColumnType("money");
+
+            modelBuilder.Entity<SaleEntity>()
+                .Property(s => s.TotalRevenue).HasColumnType("money");
+
+            modelBuilder.Entity<SaleEntity>()
+                .Property(s => s.UnitPrice).HasColumnType("money");
+
+            modelBuilder.Entity<ItemEntity>()
+                .Property(i => i.UnitCost).HasColumnType("smallmoney");
+
         }
     }
 }

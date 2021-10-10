@@ -22,7 +22,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TotalError.OrderSales.Api\TotalError.OrderSales.Api.csproj" />
       <ProjectReference Include="..\TotalError.OrderSales.Data\TotalError.OrderSales.Data.csproj" />
       <ProjectReference Include="..\TotalError.OrderSales.Domain\TotalError.OrderSales.Domain.csproj" />
     </ItemGroup>

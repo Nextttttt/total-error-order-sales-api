@@ -1,4 +1,5 @@
 using System.Reflection;
+using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -11,8 +12,11 @@ using Microsoft.Extensions.Hosting;
 using TotalError.OrderSales.Api.ExtansionMethods;
 using TotalError.OrderSales.Api.Middleware;
 using TotalError.OrderSales.Data;
+using TotalError.OrderSales.Data.Repositories;
+using TotalError.OrderSales.Domain.Abstractions.Helpers;
+using TotalError.OrderSales.Services;
 
-namespace CompanyName.ProjectName.Api
+namespace TotalError.OrderSales.Api
 {
     public class Startup
     {
@@ -38,6 +42,21 @@ namespace CompanyName.ProjectName.Api
             services.AddTotalErrorRepositories(Configuration);
             services.AddTotalErrorServices();
 
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(BaseRepository<,>)))
+                   .Where(t => t.Name.EndsWith("Repository"))
+                   .InstancePerLifetimeScope()
+                   .AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(Assembly.GetAssembly(typeof(BaseService<>)))
+                   .Where(t => t.Name.EndsWith("Service"))
+                   .InstancePerLifetimeScope()
+                   .AsImplementedInterfaces();
+
+            builder.RegisterType<KeyDerivationWrapper>().As<IKeyDerivationWrapper>().InstancePerLifetimeScope();
+            builder.RegisterType<SaltGenerator>().As<ISaltGenerator>().InstancePerLifetimeScope();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, TotalErrorDbContext dbContext)
