@@ -9,7 +9,7 @@ using TotalError.OrderSales.Domain.Dtos;
 
 namespace TotalError.OrderSales.Services
 {
-    public class SaleService : BaseService<SaleDto>, ISaleService
+    public class SaleService : BaseService<SaleCsvDto>, ISaleService
     {
         public SaleService(ISaleRepository saleRepository)
             :base(saleRepository)
@@ -17,17 +17,17 @@ namespace TotalError.OrderSales.Services
 
         }
 
-        public override Task<SaleDto> CreateAsync(SaleDto dto)
+        public override Task<SaleCsvDto> CreateAsync(SaleCsvDto dto)
         {
             return base.CreateAsync(dto);
         }
 
-        public override Task<SaleDto> GetByIdAsync(Guid id)
+        public override Task<SaleCsvDto> GetByIdAsync(Guid id)
         {
             return base.GetByIdAsync(id);   
         }
 
-        public override Task UpdateAsync(SaleDto dto)
+        public override Task UpdateAsync(SaleCsvDto dto)
         {
             return base.UpdateAsync(dto);
         }

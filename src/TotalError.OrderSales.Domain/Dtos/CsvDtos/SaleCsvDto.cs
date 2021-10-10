@@ -2,11 +2,11 @@
 
 namespace TotalError.OrderSales.Domain.Dtos
 {
-    public class SaleDto : BaseDto
+    public class SaleCsvDto : BaseDto
     {
-        public DateTime ShipDate { get; set; }
+        public DateTime  ShipDate { get; set; }
 
-        public Guid ItemId { get; set; }
+        public ItemCsvDto Item { get; set; }
 
         public decimal Price { get; set; }
 

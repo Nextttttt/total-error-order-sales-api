@@ -12,12 +12,12 @@ namespace TotalError.OrderSales.Services
     {
         private readonly IOrderService _orderService;
 
-        public IEnumerable<OrderDto> ReadFile()
+        public IEnumerable<OrderCsvDto> ReadFile()
         {
             using (var reader = new StreamReader(@"E:\programing\University\3th\API\CourseWork"))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                var records = csv.GetRecords<OrderDto>();
+                var records = csv.GetRecords<OrderCsvDto>();
 
                 return records;
             }
@@ -27,9 +27,11 @@ namespace TotalError.OrderSales.Services
         {
             var recordsList = ReadFile().ToList();
 
+
+
             foreach(var order in recordsList)
             {
-
+                _orderService.CreateAsync(order);
             }
         }
     }

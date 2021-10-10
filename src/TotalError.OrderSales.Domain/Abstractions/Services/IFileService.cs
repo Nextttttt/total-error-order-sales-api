@@ -5,6 +5,6 @@ namespace TotalError.OrderSales.Domain.Abstractions.Services
 {
     public interface IFileService
     {
-        public IEnumerable<OrderDto> ReadFile();
+        public IEnumerable<OrderCsvDto> ReadFile();
     }
 }

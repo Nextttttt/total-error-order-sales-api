@@ -10,7 +10,7 @@ using TotalError.OrderSales.Domain.Dtos;
 
 namespace TotalError.OrderSales.Data.Repositories
 {
-    public class OrderRepository : BaseRepository<OrderDto, OrderEntity>, IOrderRepository
+    public class OrderRepository : BaseRepository<OrderCsvDto, OrderEntity>, IOrderRepository
     {
         public OrderRepository(TotalErrorDbContext dbContext ,IMapper mapper)
             :base(dbContext,mapper)
@@ -18,7 +18,7 @@ namespace TotalError.OrderSales.Data.Repositories
            
         }
 
-        public override Task<OrderDto> CreateAsync(OrderDto dto)
+        public override Task<OrderCsvDto> CreateAsync(OrderCsvDto dto)
         {
             _dbContext.Regions.AddAsync(_mapper.Map<RegionEntity>(dto.Country.Region));
             _dbContext.Countries.AddAsync(_mapper.Map<CountryEntity>(dto.Country));
@@ -26,12 +26,12 @@ namespace TotalError.OrderSales.Data.Repositories
             return base.CreateAsync(dto);
         }
 
-        public override Task<OrderDto> GetByIdAsync(Guid id)
+        public override Task<OrderCsvDto> GetByIdAsync(Guid id)
         {
             return base.GetByIdAsync(id);
         }
 
-        public override Task UpdateAsync(OrderDto dto)
+        public override Task UpdateAsync(OrderCsvDto dto)
         {
             return base.UpdateAsync(dto);
         }

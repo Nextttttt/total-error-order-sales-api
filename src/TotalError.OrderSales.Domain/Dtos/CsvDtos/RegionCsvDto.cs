@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace TotalError.OrderSales.Domain.Dtos
 {
-    public class CountryDto : BaseDto
+    public class RegionCsvDto : BaseDto
     {
         public string Name { get; set; }
-
-        public Guid RegionId { get; set; }
     }
 }
