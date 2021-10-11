@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using TotalError.OrderSales.Data.Entities;
+using TotalError.OrderSales.Domain.Abstractions.Repositories;
+using TotalError.OrderSales.Domain.Dtos;
 
 namespace TotalError.OrderSales.Data.Repositories
 {
-    class SaleRepository
+    public class SaleRepository : BaseRepository<SaleDto,SaleEntity>, ISaleRepository
     {
+        public SaleRepository(TotalErrorDbContext dbContext, IMapper mapper)
+            :base(dbContext, mapper)
+        {
+
+        }
     }
 }

@@ -8,15 +8,21 @@ namespace TotalError.OrderSales.Services
 {
     public class ItemService : BaseService<ItemDto>, IItemService
     {
+        private readonly IItemRepository _itemRepository;
         public ItemService(IItemRepository itemRepository)
             :base(itemRepository)
         {
-
+            _itemRepository = itemRepository;
         }
 
-        public override Task<ItemDto> CreateAsync(ItemDto dto)
+        public override async Task<ItemDto> CreateAsync(ItemDto dto)
         {
-            return base.CreateAsync(dto);
+            var existingEntry =await _itemRepository.GetByTypeAsync(dto.ItemType);
+            if(existingEntry != null && existingEntry.Cost == dto.Cost)
+            {
+                return existingEntry;
+            }
+            return await base.CreateAsync(dto);
         }
 
         public override Task<ItemDto> GetByIdAsync(Guid id)

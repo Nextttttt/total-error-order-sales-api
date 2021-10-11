@@ -7,7 +7,7 @@ using TotalError.OrderSales.Domain.Dtos;
 
 namespace TotalError.OrderSales.Domain.Abstractions.Services
 {
-    public interface ISaleService : IBaseService<SaleCsvDto>
+    public interface ISaleService : IBaseService<SaleDto>
     {
     }
 }

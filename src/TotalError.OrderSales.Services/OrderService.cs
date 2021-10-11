@@ -6,7 +6,7 @@ using TotalError.OrderSales.Domain.Dtos;
 
 namespace TotalError.OrderSales.Services
 {
-    public class OrderService : BaseService<OrderCsvDto>, IOrderService
+    public class OrderService : BaseService<OrderDto>, IOrderService
     {
         private readonly IOrderRepository _orderRepository;
 
@@ -16,17 +16,17 @@ namespace TotalError.OrderSales.Services
             _orderRepository = orderRepository;
         }
 
-        public override Task<OrderCsvDto> CreateAsync(OrderCsvDto dto)
+        public override Task<OrderDto> CreateAsync(OrderDto dto)
         {
             return base.CreateAsync(dto);
         }
 
-        public override Task<OrderCsvDto> GetByIdAsync(Guid id)
+        public override Task<OrderDto> GetByIdAsync(Guid id)
         {
             return base.GetByIdAsync(id);
         }
 
-        public override Task UpdateAsync(OrderCsvDto dto)
+        public override Task UpdateAsync(OrderDto dto)
         {
             return base.UpdateAsync(dto);
         }

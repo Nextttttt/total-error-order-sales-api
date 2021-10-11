@@ -13,14 +13,14 @@ namespace TotalError.OrderSales.Api.Controllers
 
         }
 
-        public Task<IActionResult> ReadFile()
-        {
+        //public Task<IActionResult> ReadFile()
+        //{
 
-        }
+        //}
 
-        public Task<IActionResult> SaveFile()
-        {
+        //public Task<IActionResult> SaveFile()
+        //{
 
-        }
+        //}
     }
 }

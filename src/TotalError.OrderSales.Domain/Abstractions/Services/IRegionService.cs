@@ -1,4 +1,5 @@
-﻿using TotalError.OrderSales.Domain.Dtos;
+﻿using System.Threading.Tasks;
+using TotalError.OrderSales.Domain.Dtos;
 
 namespace TotalError.OrderSales.Domain.Abstractions.Services
 {

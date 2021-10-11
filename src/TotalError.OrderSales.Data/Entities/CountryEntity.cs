@@ -10,7 +10,7 @@ namespace TotalError.OrderSales.Data.Entities
     public class CountryEntity : BaseEntity
     {
         [Required]
-        [MaxLength(20)]
+        [MaxLength(100)]
         public string Name { get; set; }
 
         [Required]

@@ -10,6 +10,7 @@ namespace TotalError.OrderSales.Data.Entities
     public class ItemEntity : BaseEntity
     {
         [Required]
+        [MaxLength(50)]
         public string ItemType { get; set; }
 
         [Required]
