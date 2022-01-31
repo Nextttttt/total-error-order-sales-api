@@ -25,5 +25,12 @@ namespace TotalError.OrderSales.Data.Repositories
 
             return _mapper.Map<CountryDto>(entity);
         }
+
+        public async Task<Guid> GetIdByNameAsync(string name)
+        {
+            var entity = await _dbContext.Countries.Where(c => c.Name == name).FirstOrDefaultAsync();
+
+            return entity.Id;
+        }
     }
 }

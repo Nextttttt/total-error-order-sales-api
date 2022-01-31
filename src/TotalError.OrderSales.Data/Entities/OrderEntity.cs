@@ -11,12 +11,15 @@ namespace TotalError.OrderSales.Data.Entities
     public class OrderEntity : BaseEntity
     {
         [Required]
-        [EnumDataType(typeof(SalesChannel))]
-        public SalesChannel SalesChannel { get; set; }
+        [MaxLength(20)]
+        public string OrderId { get; set; }
+        [Required]
+        [MaxLength(10)]
+        public string SalesChannel { get; set; }
 
         [Required]
-        [EnumDataType(typeof(OrderPriority))]
-        public OrderPriority OrderPriority { get; set; }
+        [MaxLength(5)]
+        public string OrderPriority { get; set; }
 
         [Required]
         public DateTime OrderDate { get; set; }
@@ -38,5 +41,7 @@ namespace TotalError.OrderSales.Data.Entities
 
         [Required]
         public SaleEntity Sale { get; set; }
+
+        public DateTime CreatedOn { get; set; }
     }
 }

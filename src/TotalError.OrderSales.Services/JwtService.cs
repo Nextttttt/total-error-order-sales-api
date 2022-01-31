@@ -25,9 +25,11 @@ namespace TotalError.OrderSales.Services
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.Key));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            List<Claim> claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Role, role.ToString()));
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, userId.ToString()));
+            List<Claim> claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Role, role.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, userId.ToString())
+            };
 
             var token = new JwtSecurityToken(claims: claims,
                 audience: _settings.Audience,

@@ -17,5 +17,7 @@ namespace TotalError.OrderSales.Data.Entities
         public Guid RegionId { get; set; }
 
         public RegionEntity Region { get; set; }
+
+        public List<OrderEntity> Orders { get; set; }
     }
 }

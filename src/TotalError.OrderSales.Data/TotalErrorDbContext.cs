@@ -42,9 +42,19 @@ namespace TotalError.OrderSales.Data
                 .WithOne(o => o.Region)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<CountryEntity>()
+                .HasMany(c => c.Orders)
+                .WithOne(o => o.Country)
+                .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<OrderEntity>()
                 .HasOne(o => o.Region)
                 .WithMany(r => r.Orders)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<OrderEntity>()
+                .HasOne(o => o.Country)
+                .WithMany(c => c.Orders)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<SaleEntity>()

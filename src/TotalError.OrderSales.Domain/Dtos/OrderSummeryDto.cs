@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TotalError.OrderSales.Domain.Dtos
 {
-    public class CountryDto : BaseDto
+    public class OrderSummeryDto
     {
-        public string Name { get; set; }
+        public List<OrderDto> Orders { get; set; }
 
-        public string RegionName { get; set; }
+        public decimal TotalCosts { get; set; }
 
-        public Guid RegionId { get; set; }
+        public decimal TotalProfits { get; set; }
     }
 }

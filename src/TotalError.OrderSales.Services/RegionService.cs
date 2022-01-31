@@ -26,6 +26,11 @@ namespace TotalError.OrderSales.Services
             return await base.CreateAsync(dto);
         }
 
+        public async Task<Guid> GetIdByNameAsync(string name)
+        {
+            return await _regionRepository.GetIdByNameAsync(name);
+        }
+
         public override Task<RegionDto> GetByIdAsync(Guid id)
         {
             return base.GetByIdAsync(id);

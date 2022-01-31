@@ -6,6 +6,8 @@ namespace TotalError.OrderSales.Domain.Dtos
     {
         public DateTime ShipDate { get; set; }
 
+        public string ItemType { get; set; }
+
         public Guid ItemId { get; set; }
 
         public decimal Price { get; set; }

@@ -56,6 +56,7 @@ namespace TotalError.OrderSales.Api.ExtansionMethods
                 mc.AddExpressionMapping();
                 mc.AddProfile(new Data.MapperProfile());
                 mc.AddProfile(new Api.MapperProfile());
+                mc.AddProfile(new Domain.MapperProfile());
             });
         }
 

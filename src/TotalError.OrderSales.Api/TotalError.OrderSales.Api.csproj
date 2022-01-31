@@ -5,6 +5,10 @@
         <StartupObject>TotalError.OrderSales.Api.Program</StartupObject>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
+
     <ItemGroup>
       <PackageReference Include="Autofac" Version="6.2.0" />
       <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />

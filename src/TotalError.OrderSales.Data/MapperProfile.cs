@@ -8,7 +8,9 @@ namespace TotalError.OrderSales.Data
     {
         public MapperProfile()
         {
-            CreateMap<OrderDto, OrderEntity>().ReverseMap();
+            CreateMap<OrderDto, OrderEntity>()
+                .ForMember(o => o.OrderDate, options => options.MapFrom(o => o.Date))
+                .ReverseMap();
             CreateMap<RegionDto, RegionEntity>().ReverseMap();
             CreateMap<CountryDto, CountryEntity>().ReverseMap();
             CreateMap<ItemDto, ItemEntity>().ReverseMap();

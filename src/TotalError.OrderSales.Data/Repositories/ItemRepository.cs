@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using TotalError.OrderSales.Data.Entities;
@@ -21,6 +22,13 @@ namespace TotalError.OrderSales.Data.Repositories
             var entity = await _dbContext.Items.Where(i => i.ItemType == type).FirstOrDefaultAsync();
 
             return _mapper.Map<ItemDto>(entity);
+        }
+
+        public async Task<Guid> GetIdByTypeAsync(string type)
+        {
+            var entity = await _dbContext.Items.Where(i => i.ItemType == type).FirstOrDefaultAsync();
+
+            return entity.Id;
         }
     }
 }

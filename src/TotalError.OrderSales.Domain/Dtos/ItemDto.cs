@@ -3,6 +3,6 @@
     public class ItemDto : BaseDto
     {
         public string ItemType { get; set; }
-        public decimal Cost { get; set; }
+        public decimal UnitCost { get; set; }
     }
 }

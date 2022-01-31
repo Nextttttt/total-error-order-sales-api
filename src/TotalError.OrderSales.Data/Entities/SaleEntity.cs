@@ -10,8 +10,7 @@ namespace TotalError.OrderSales.Data.Entities
 
         [Required]
         public Guid ItemId { get; set; }
-
-        [Required]
+        
         public ItemEntity Item { get; set; }
 
         [Required]

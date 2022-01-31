@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TotalError.OrderSales.Data;
 
 namespace TotalError.OrderSales.Data.Migrations
 {
     [DbContext(typeof(TotalErrorDbContext))]
-    partial class TotalErrorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211018061821_FixOrderIdType")]
+    partial class FixOrderIdType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,16 +70,11 @@ namespace TotalError.OrderSales.Data.Migrations
                     b.Property<Guid>("CountryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("OrderId")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OrderPriority")
                         .IsRequired()
@@ -197,9 +194,9 @@ namespace TotalError.OrderSales.Data.Migrations
             modelBuilder.Entity("TotalError.OrderSales.Data.Entities.OrderEntity", b =>
                 {
                     b.HasOne("TotalError.OrderSales.Data.Entities.CountryEntity", "Country")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TotalError.OrderSales.Data.Entities.RegionEntity", "Region")
@@ -230,11 +227,6 @@ namespace TotalError.OrderSales.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Item");
-                });
-
-            modelBuilder.Entity("TotalError.OrderSales.Data.Entities.CountryEntity", b =>
-                {
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("TotalError.OrderSales.Data.Entities.ItemEntity", b =>

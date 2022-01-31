@@ -10,10 +10,12 @@ namespace TotalError.OrderSales.Services
     public class CountryService : BaseService<CountryDto>, ICountryService
     {
         private readonly ICountryRepository _countryRepository;
-        public CountryService(ICountryRepository countryRepository)
+        private readonly IRegionService _regionService;
+        public CountryService(ICountryRepository countryRepository, IRegionService regionService)
             :base(countryRepository)
         {
             _countryRepository = countryRepository;
+            _regionService = regionService;
         }
 
         public override async Task<CountryDto> CreateAsync(CountryDto dto)
@@ -24,12 +26,18 @@ namespace TotalError.OrderSales.Services
             {
                 return existingEntry;
             }
+            dto.RegionId = await _regionService.GetIdByNameAsync(dto.RegionName);
             return await base.CreateAsync(dto);
         }
 
         public override Task<CountryDto> GetByIdAsync(Guid id)
         {
             return base.GetByIdAsync(id);
+        }
+
+        public async Task<Guid> GetIdByNameAsync(string name)
+        {
+            return await _countryRepository.GetIdByNameAsync(name);
         }
 
         public override Task UpdateAsync(CountryDto dto)

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TotalError.OrderSales.Domain.Abstractions.Helpers;
 using TotalError.OrderSales.Domain.Abstractions.Repositories;
 using TotalError.OrderSales.Domain.Abstractions.Services;
